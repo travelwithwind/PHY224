@@ -91,7 +91,7 @@ for i in range(4):
 
 diameter = np.array([45.1, 21, 10.7, 5.5]) / 100
 g = diameter / (global_mean / (2 * np.pi)) ** 2
-g_std = (g * 2 * global_std_error) ** 2  # Propagation of error using 1st order taylor expansion
+g_std = g * 2 * global_std_error/global_mean  # Propagation of error using 1st order taylor expansion
 
 fig, ax = plt.subplots()
 ax.plot(x, g)
