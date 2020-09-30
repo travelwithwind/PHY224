@@ -2,7 +2,7 @@ import numpy as np
 from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
 
-xdata, ydata = np.loadtxt("ohm data.txt", unpack=True, delimiter="\t", skiprows=1)
+xdata, ydata = np.loadtxt("ohm data2.txt", unpack=True, delimiter="\t", skiprows=1)
 
 
 accuracy_x = xdata * 0.0025  # DC Voltage Accuracy ±(0.25% of reading)
