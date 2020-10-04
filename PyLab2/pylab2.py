@@ -2,7 +2,7 @@ import numpy as np
 from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
 
-xdata, ydata = np.loadtxt("ohm data2.txt", unpack=True, delimiter="\t", skiprows=1)
+xdata, ydata = np.loadtxt("ohm data.txt", unpack=True, delimiter="\t", skiprows=1)
 
 
 accuracy_x = xdata * 0.0025  # DC Voltage Accuracy ±(0.25% of reading)
@@ -25,12 +25,17 @@ fig, ax = plt.subplots()
 ax.plot(xdata, model_function(xdata, *p_opt), 'r-',
         label='fit: a=%5.3f, b=%5.3f' % tuple(p_opt))
 ax.errorbar(xdata, ydata, xerr=sigma_x, yerr=sigma_y, linestyle='None', label="error")
+ax.set_title('Current(mA) vs Voltage(V)')
+ax.set_xlabel('Voltage(V)')
+ax.set_ylabel('Current(mA)')
 ax.legend()
 plt.show()
 
 fig, ax = plt.subplots()
 ax.set_title('residuals')
 ax.scatter(xdata, model_function(xdata, *p_opt) - ydata)
+ax.set_xlabel('Voltage(V)')
+ax.set_ylabel('Current(mA)')
 plt.show()
 
 # Q2
@@ -45,11 +50,17 @@ fig, ax = plt.subplots()
 ax.plot(xdata, model_function2(xdata, *p_opt), 'r-',
         label='fit: a=%5.3f' % tuple(p_opt))
 ax.errorbar(xdata, ydata, xerr=sigma_x, yerr=sigma_y, linestyle='None', label="error")
+ax.set_title('Current(mA) vs Voltage(V)')
+ax.set_xlabel('Voltage(V)')
+ax.set_ylabel('Current(mA)')
 ax.legend()
 plt.show()
 
 fig, ax = plt.subplots()
 ax.set_title('residuals')
+ax.set_title('Current(mA) vs Voltage(V)')
+ax.set_xlabel('Voltage(V)')
+ax.set_ylabel('Current(mA)')
 ax.scatter(xdata, model_function2(xdata, *p_opt) - ydata)
 plt.show()
 
