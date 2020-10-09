@@ -2,7 +2,7 @@ import numpy as np
 from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
 
-xdata, ydata = np.loadtxt(r"C:\Users\lenovo\Desktop\courses\PHY224\assignments\PyLab 4\data.txt", unpack=True, delimiter="\t", skiprows=1)
+xdata, ydata = np.loadtxt(r"C:\Users\student\Desktop\data.txt", unpack=True, delimiter="\t", skiprows=1)
 
 
 accuracy_x = xdata * 0.0025  # DC Voltage Accuracy ±(0.25% of reading)
@@ -13,6 +13,9 @@ accuracy_y = ydata * 0.0075  # DC Current Accuracy ±(0.75% of reading)
 precision_y = 0.1  # Error of precision is 0.1mA
 sigma_y = np.maximum(accuracy_y, precision_y)
 
+# turn mA to A
+ydata = ydata/1000
+sigma_y = sigma_y/1000
 
 # functions
 def f(x, a, b):
@@ -41,9 +44,9 @@ ax.loglog(xdata, np.exp(f(logx, *p_opt)), 'r-',
         label='fit: a=%5.3f, b=%5.3f' % tuple(p_opt))
 ax.errorbar(xdata, ydata, xerr=sigma_x, yerr=sigma_y, label="error",marker=".")
 ax.plot(xdata, theoretical(ydata[0], xdata), label="theoretical")
-ax.set_title('Current(mA) vs Voltage(V)')
+ax.set_title('Current(A) vs Voltage(V)')
 ax.set_xlabel('Voltage(V)')
-ax.set_ylabel('Current(mA)')
+ax.set_ylabel('Current(A)')
 ax.legend()
 plt.show()
 
@@ -55,9 +58,9 @@ ax.loglog(xdata, g(xdata, *p_opt), 'r-',
         label='fit: a=%5.3f, b=%5.3f' % tuple(p_opt))
 ax.errorbar(xdata, ydata, xerr=sigma_x, yerr=sigma_y, label="error",marker=".")
 ax.plot(xdata, theoretical(ydata[0], xdata), label="theoretical")
-ax.set_title('Current(mA) vs Voltage(V)')
+ax.set_title('Current(A) vs Voltage(V)')
 ax.set_xlabel('Voltage(V)')
-ax.set_ylabel('Current(mA)')
+ax.set_ylabel('Current(A)')
 ax.legend()
 plt.show()
 
