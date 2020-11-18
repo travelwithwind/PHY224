@@ -2,7 +2,7 @@ import numpy as np
 from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
 
-xdata, ydata = np.loadtxt(r"C:\Users\student\Desktop\data.txt", unpack=True, delimiter="\t", skiprows=1)
+xdata, ydata = np.loadtxt(r"C:\Users\lenovo\Desktop\courses\PHY224\assignments\PyLab 4\data.txt", unpack=True, delimiter="\t", skiprows=1)
 
 
 accuracy_x = xdata * 0.0025  # DC Voltage Accuracy ±(0.25% of reading)
@@ -49,6 +49,7 @@ ax.set_xlabel('Voltage(V)')
 ax.set_ylabel('Current(A)')
 ax.legend()
 plt.show()
+print("The estimate for blackbody values is {:.3f} with variance {:.3f}".format(p_opt[0], p_cov[0,0]) )
 
 
 # nonlinear regression on (xi, yi) using g
