@@ -1,0 +1,11 @@
+distance between scope and mirror 190cm +- 2cm
+2.16m horizontal
+37cm vertical
+
+
+distance between wire and mirror 21.5cm +- 0.5cm
+length of wire 29cm +- 1mm
+
+
+h0 = 0.149   # the initial reading of ruler without using any weight and current
+d0 = 61-54 = 7mm =0.007 m # the initial distance between wires without using any weight and current
